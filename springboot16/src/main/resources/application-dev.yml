@@ -1,0 +1,63 @@
+# mybatis-plus相关配置
+mybatis-plus:
+  # xml扫描，多个目录用逗号或者分号分隔（告诉 Mapper 所对应的 XML 文件位置）
+  mapper-locations: classpath:mapper/*.xml
+  # 以下配置均有默认值,可以不设置
+  global-config:
+    db-config:
+      #主键类型 AUTO:"数据库ID自增" INPUT:"用户输入ID",ID_WORKER:"全局唯一ID (数字类型唯一ID)", UUID:"全局唯一ID UUID";
+      id-type: auto
+      #字段策略 IGNORED:"忽略判断"  NOT_NULL:"非 NULL 判断")  NOT_EMPTY:"非空判断"
+      field-strategy: NOT_EMPTY
+      #数据库类型
+      db-type: MYSQL
+  configuration:
+    # 是否开启自动驼峰命名规则映射:从数据库列名到Java属性驼峰命名的类似映射
+    map-underscore-to-camel-case: true
+    # 如果查询结果中包含空值的列，则 MyBatis 在映射的时候，不会映射这个字段
+    call-setters-on-nulls: true
+    # 这个配置会将执行的sql打印出来，在开发或测试的时候可以用
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+# 指定com.dgz包下所有类的日志级别
+logging:
+  level:
+    com.dgz.springboot16: debug
+
+
+# redis配置(哨兵)
+spring:
+#  redis:
+#    #password: 123456
+#    sentinel:
+#      #指定redis的地址
+#      nodes:
+#        - 192.168.40.129:26379
+#        - 192.168.40.129:26380
+#        - 192.168.40.129:26381
+#      # 哨兵的名称
+#      master: mymaster
+#    #Redis数据库索引（默认为0)
+#    database: 0
+#    lettuce:
+#      pool:
+#        # 连接池最大连接数（使用负值表示没有限制）
+#        max-active:  50
+#        # 连接池中的最大空闲连接
+#        max-idle: 20
+#        # 连接池中的最小空闲连接
+#        min-idle: 2
+#        # 连接池最大阻塞等待时间（使用负值表示没有限制
+#        max-wait: 5000
+#    #连接超时时间（毫秒）
+#    timeout: 5000
+  data: # 配置mongodb
+    mongodb:
+      # 主机地址
+      host: 192.168.40.129
+      # 数据库
+      database: articledb
+      # 默认端口是27017
+      port: 27017
+      #也可以使用uri连接
+      #uri: mongodb://192.168.40.134:27017/articledb

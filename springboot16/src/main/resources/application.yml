@@ -1,0 +1,30 @@
+# \u914D\u7F6E\u7AEF\u53E3
+server:
+  port: 80
+
+spring:
+  profiles: #\u6307\u5B9A\u5F00\u53D1\u73AF\u5883
+    active: dev
+  datasource:  # Spring Boot \u7684\u6570\u636E\u6E90\u914D\u7F6E
+    name: springboot
+    url: jdbc:mysql://localhost:3306/springboot?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+    username: root
+    password: root
+    # \u4F7F\u7528druid\u6570\u636E\u6E90
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    filters: stat
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    maxOpenPreparedStatements: 20
+
